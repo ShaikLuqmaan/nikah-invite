@@ -15,8 +15,8 @@ Open [http://localhost:3000](http://localhost:3000)
 
 | Link | Who to send it to |
 |---|---|
-| `yourdomain.com` | General nikah guests — masjid details only |
-| `yourdomain.com/gathering` | Close family & friends — includes family gathering |
+| `luqmaansimrah.com` | General nikah guests — masjid details only |
+| `luqmaansimrah.com/gathering` | Close family & friends — includes family gathering |
 
 No guest names or personal URLs — just share the right link with the right group.
 
