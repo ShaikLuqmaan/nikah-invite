@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nikah Invitation — Design Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream-50: #FDFBF8;
+      --cream-100: #F8F4ED;
+      --cream-200: #EDE6DA;
+      --cream-300: #DDD4C4;
+      --red-500: #9B2335;
+      --red-600: #7E1C2B;
+      --red-muted: rgba(155, 35, 53, 0.08);
+      --red-border: rgba(155, 35, 53, 0.18);
+      --ink: #1E1A17;
+      --ink-soft: #5C534A;
+      --ink-muted: #8A8178;
+      --line: rgba(30, 26, 23, 0.08);
+
+      --font-arabic: "Amiri", serif;
+      --font-serif: "Cormorant Garamond", Georgia, serif;
+      --font-sans: "Source Sans 3", system-ui, sans-serif;
+
+      --max-width: 26rem;
+      --section-gap: 1.75rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--ink-soft);
+      background: var(--cream-50);
+    }
+
+    .preview-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem 1rem;
+      padding: 0.6rem 0.75rem;
+      background: var(--ink);
+      color: var(--cream-100);
+      font-size: 0.6875rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .preview-bar span { opacity: 0.55; }
+
+    .preview-toggle {
+      display: flex;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .preview-toggle button {
+      border: none;
+      background: transparent;
+      color: var(--cream-200);
+      font: inherit;
+      font-size: 0.625rem;
+      letter-spacing: 0.05em;
+      padding: 0.35rem 0.7rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .preview-toggle button.active {
+      background: var(--red-500);
+      color: #fff;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .nav {
+      width: 100%;
+      max-width: var(--max-width);
+      padding: 1rem 1rem 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .monogram {
+      font-family: var(--font-serif);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .monogram-groom { color: var(--ink-soft); }
+    .monogram-amp { color: var(--red-500); font-style: italic; letter-spacing: 0; }
+    .monogram-bride { color: var(--red-500); }
+
+    .red-accent-line {
+      display: block;
+      width: 2.25rem;
+      height: 2px;
+      margin: 0.65rem auto 0;
+      background: var(--red-500);
+      opacity: 0.75;
+    }
+
+    main {
+      width: 100%;
+      max-width: var(--max-width);
+      padding: 1.25rem 1rem 2.5rem;
+    }
+
+    .bismillah {
+      text-align: center;
+      padding-bottom: 1.25rem;
+      margin-bottom: var(--section-gap);
+    }
+
+    .bismillah-ar {
+      font-family: var(--font-arabic);
+      font-size: 1.375rem;
+      line-height: 1.6;
+      color: var(--ink);
+      direction: rtl;
+    }
+
+    .bismillah-en {
+      margin-top: 0.35rem;
+      font-size: 0.6875rem;
+      color: var(--ink-muted);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+    }
+
+    .hero {
+      text-align: center;
+      padding-bottom: var(--section-gap);
+    }
+
+    .hero-intro {
+      font-size: 0.8125rem;
+      color: var(--ink-muted);
+      max-width: 21rem;
+      margin: 0 auto 1.25rem;
+      line-height: 1.55;
+    }
+
+    .person-block { margin-bottom: 0.85rem; }
+
+    .person-name {
+      font-family: var(--font-serif);
+      font-size: clamp(1.75rem, 7vw, 2.35rem);
+      font-weight: 500;
+      line-height: 1.12;
+      color: var(--ink);
+    }
+
+    .person-name.bride {
+      color: var(--red-500);
+    }
+
+    .person-parent {
+      margin-top: 0.3rem;
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+      font-weight: 300;
+    }
+
+    .ampersand {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-style: italic;
+      color: var(--red-500);
+      margin: 0.25rem 0 0.85rem;
+      line-height: 1;
+    }
+
+    .mosque-mark {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+      opacity: 0.5;
+    }
+
+    .mosque-mark svg {
+      width: 2rem;
+      height: 2rem;
+      stroke: var(--red-500);
+      fill: none;
+      stroke-width: 1;
+    }
+
+    .ayah {
+      text-align: center;
+      padding: var(--section-gap) 1rem;
+      background: var(--red-muted);
+      margin-left: -1rem;
+      margin-right: -1rem;
+    }
+
+    .ayah-ar {
+      font-family: var(--font-arabic);
+      font-size: 1.15rem;
+      line-height: 1.75;
+      color: var(--ink);
+      direction: rtl;
+      max-width: 22rem;
+      margin: 0 auto;
+    }
+
+    .ayah-en {
+      margin-top: 0.65rem;
+      font-size: 0.8125rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ink-soft);
+      line-height: 1.55;
+      max-width: 22rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .ayah-ref {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.625rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red-500);
+    }
+
+    section {
+      padding: var(--section-gap) 0;
+    }
+
+    .section-label {
+      font-size: 0.625rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--red-500);
+      margin-bottom: 0.85rem;
+      text-align: center;
+    }
+
+    .section-label::after {
+      content: "";
+      display: block;
+      width: 1.25rem;
+      height: 2px;
+      margin: 0.45rem auto 0;
+      background: var(--red-500);
+      opacity: 0.5;
+    }
+
+    .section-body { text-align: center; font-weight: 300; }
+
+    .event-card {
+      background: var(--cream-100);
+      padding: 1.25rem 1.15rem;
+      text-align: center;
+    }
+
+    .event-date {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.85rem;
+      line-height: 1.25;
+    }
+
+    .event-detail { margin-bottom: 0.2rem; }
+
+    .event-detail strong {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .event-detail span {
+      font-size: 0.8125rem;
+      color: var(--ink-muted);
+      font-weight: 300;
+    }
+
+    .map-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 1rem;
+      padding: 0.55rem 1rem;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--cream-50);
+      background: var(--red-500);
+      transition: background 0.2s;
+    }
+
+    .map-link:hover { background: var(--red-600); }
+
+    .map-link svg {
+      width: 0.8rem;
+      height: 0.8rem;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .note {
+      font-size: 0.8125rem;
+      font-weight: 300;
+      color: var(--ink-muted);
+      text-align: center;
+      line-height: 1.55;
+      max-width: 22rem;
+      margin: 0 auto;
+    }
+
+    .note em {
+      font-style: normal;
+      color: var(--ink-soft);
+    }
+
+    .private-section { display: none; }
+    body.view-family .private-section { display: block; }
+
+    .private-badge {
+      display: inline-block;
+      margin-bottom: 0.65rem;
+      padding: 0.25rem 0.6rem;
+      font-size: 0.5625rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red-600);
+      background: var(--red-muted);
+      border-radius: 999px;
+    }
+
+    .gathering-card {
+      background: var(--red-muted);
+      padding: 1.25rem 1.15rem;
+      text-align: left;
+    }
+
+    .gathering-card .event-date {
+      font-size: 1.1rem;
+      text-align: left;
+      margin-bottom: 0.85rem;
+    }
+
+    .guest-greeting {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--ink);
+      margin-bottom: 0.65rem;
+    }
+
+    .gathering-card .map-link { margin-top: 1rem; }
+
+    .families {
+      font-family: var(--font-serif);
+      font-size: 0.9375rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-note {
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+      font-weight: 300;
+      line-height: 1.5;
+    }
+
+    @media print {
+      .preview-bar { display: none !important; }
+      body { background: #fff; }
+      main { padding-bottom: 1rem; }
+      .map-link { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      .ayah, .event-card, .gathering-card, .private-badge, .person-name.bride,
+      .monogram-bride, .monogram-amp, .ampersand, .section-label, .ayah-ref,
+      .red-accent-line, .bismillah, .map-link {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body class="view-public">
+
+  <div class="preview-bar">
+    <span>Preview · /gathering shows family section</span>
+    <div class="preview-toggle">
+      <button type="button" class="active" data-view="public">/ — Nikah only</button>
+      <button type="button" data-view="family">/gathering</button>
+    </div>
+  </div>
+
+  <div class="page">
+    <nav class="nav" aria-label="Site">
+      <div class="monogram" aria-hidden="true">
+        <span class="monogram-groom">L</span>
+        <span class="monogram-amp">&amp;</span>
+        <span class="monogram-bride">S</span>
+      </div>
+    </nav>
+
+    <main>
+      <div class="bismillah">
+        <p class="bismillah-ar" lang="ar">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+        <p class="bismillah-en">In the name of Allah, the Most Gracious, the Most Merciful</p>
+        <span class="red-accent-line" aria-hidden="true"></span>
+      </div>
+
+      <header class="hero">
+        <p class="hero-intro">
+          By the grace of Almighty Allah, the families cordially invite you to honour the Nikah of
+        </p>
+
+        <div class="person-block">
+          <h1 class="person-name">Luqmaan Shaik</h1>
+          <p class="person-parent">Son of Shaik Shafi ulla</p>
+        </div>
+
+        <p class="ampersand" aria-hidden="true">&amp;</p>
+
+        <div class="person-block">
+          <h1 class="person-name bride">Simrah Ummeruman</h1>
+          <p class="person-parent">Daughter of Mohammed Abdul Faheem</p>
+        </div>
+
+        <div class="mosque-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 6 L24 14 M18 14 L30 14 M16 14 L16 22 Q16 28 24 32 Q32 28 32 22 L32 14"/>
+            <path d="M12 32 L36 32 M14 32 L14 38 M34 32 L34 38 M20 32 L20 38 M28 32 L28 38"/>
+            <circle cx="24" cy="10" r="2"/>
+          </svg>
+        </div>
+      </header>
+
+      <blockquote class="ayah" cite="Quran 30:21">
+        <p class="ayah-ar" lang="ar">وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
+        <p class="ayah-en">"And He placed between you affection and mercy."</p>
+        <cite class="ayah-ref">Surah Ar-Rum · 30:21</cite>
+      </blockquote>
+
+      <section aria-labelledby="nikah-heading">
+        <h2 class="section-label" id="nikah-heading">The Nikah</h2>
+        <div class="section-body">
+          <div class="event-card">
+            <p class="event-date">Sunday, 12th July 2026<br><span class="event-hijri" style="font-size:0.8125rem;font-weight:400;color:var(--ink-muted);margin-top:0.25rem;display:inline-block">27 Muharram 1448 AH</span></p>
+            <div class="event-detail">
+              <strong>Masjid-e-Baqi</strong>
+              <span>8-2-703, Road No. 12, Bhola Nagar, Banjara Hills, Hyderabad, Telangana 500028</span>
+            </div>
+            <div class="event-detail" style="margin-top:0.65rem">
+              <strong>After Asr</strong>
+              <span>Please arrive early</span>
+            </div>
+            <a class="map-link" href="https://maps.app.goo.gl/4aGbWoqFoxsucx8H9" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24"><path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              Open in Maps
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="private-section" aria-labelledby="gathering-heading">
+        <h2 class="section-label" id="gathering-heading">Family Gathering</h2>
+        <div class="section-body">
+          <div class="gathering-card">
+            <p class="note" style="text-align:left;margin-bottom:1rem;max-width:none">
+              You are warmly invited to a small gathering with close family and friends following the Nikah.
+            </p>
+            <p class="event-date">Sunday, 12th July 2026<br><span class="event-hijri" style="font-size:0.8125rem;font-weight:400;color:var(--ink-muted);margin-top:0.25rem;display:inline-block">27 Muharram 1448 AH</span></p>
+            <div class="event-detail">
+              <strong>Silver Tower Convention</strong>
+              <span>Nanal Nagar, Langar Houz, Hyderabad, Telangana 500008</span>
+            </div>
+            <div class="event-detail" style="margin-top:0.65rem">
+              <strong>After Isha</strong>
+              <span>Family &amp; close friends only</span>
+            </div>
+            <a class="map-link" href="https://maps.app.goo.gl/yq5y7mS6k72y6JzB9" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24"><path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              Open in Maps
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="closing-heading">
+        <h2 class="section-label" id="closing-heading">With love &amp; prayers</h2>
+        <div class="section-body">
+          <p class="families">Shaik &amp; Faheem Families</p>
+          <p class="note">
+            We humbly request the honour of your presence and your heartfelt duas.
+          </p>
+        </div>
+      </section>
+
+      <blockquote class="ayah" cite="Quran 2:187">
+        <p class="ayah-ar" lang="ar">هُنَّ لِبَاسٌ لَّكُمْ وَأَنتُمْ لِبَاسٌ لَّهُنَّ</p>
+        <p class="ayah-en">"They are clothing for you and you are clothing for them."</p>
+        <cite class="ayah-ref">Surah Al-Baqarah · 2:187</cite>
+      </blockquote>
+
+      <section>
+        <p class="footer-note">
+          The Walima will be held at a later date, Insha'Allah. Details will be shared in due time.
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    document.querySelectorAll('.preview-toggle button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.preview-toggle button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.body.classList.toggle('view-family', btn.dataset.view === 'family');
+        document.body.classList.toggle('view-public', btn.dataset.view === 'public');
+      });
+    });
+  </script>
+</body>
+</html>

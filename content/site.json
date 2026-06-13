@@ -1,0 +1,52 @@
+{
+  "siteUrl": "https://yourdomain.com",
+  "title": "Luqmaan & Simrah's Nikah Invitation",
+  "monogram": {
+    "groom": "L",
+    "bride": "S"
+  },
+  "groom": {
+    "name": "Luqmaan Shaik",
+    "parent": "Son of Shaik Shafi ulla"
+  },
+  "bride": {
+    "name": "Simrah Ummeruman",
+    "parent": "Daughter of Mohammed Abdul Faheem"
+  },
+  "families": "Shaik & Faheem Families",
+  "nikah": {
+    "date": "Sunday, 12th July 2026",
+    "hijriDate": "27 Muharram 1448 AH",
+    "venue": "Masjid-e-Baqi",
+    "location": "8-2-703, Road No. 12, Bhola Nagar, Banjara Hills, Hyderabad, Telangana 500028",
+    "time": "After Asr",
+    "timeNote": "Please arrive early",
+    "mapsUrl": "https://maps.app.goo.gl/4aGbWoqFoxsucx8H9",
+    "calendar": {
+      "start": "2026-07-12T16:30:00",
+      "end": "2026-07-12T18:30:00",
+      "timezone": "Asia/Kolkata"
+    }
+  },
+  "gathering": {
+    "date": "Sunday, 12th July 2026",
+    "venue": "Silver Tower Convention",
+    "location": "Nanal Nagar, Langar Houz, Hyderabad, Telangana 500008",
+    "time": "After Isha",
+    "timeNote": "Family & close friends only",
+    "mapsUrl": "https://maps.app.goo.gl/yq5y7mS6k72y6JzB9",
+    "message": "You are warmly invited to a small gathering with close family and friends following the Nikah.",
+    "calendar": {
+      "start": "2026-07-12T20:00:00",
+      "end": "2026-07-12T23:00:00",
+      "timezone": "Asia/Kolkata"
+    }
+  },
+  "notes": {
+    "walima": "The Walima will be held at a later date, Insha'Allah. Details will be shared in due time.",
+    "dua": {
+      "arabic": "بَارَكَ اللَّهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ",
+      "transliteration": "Barakallahu lakuma wa baraka 'alaikuma wa jama'a baynakuma fi khayr."
+    }
+  }
+}

@@ -1,0 +1,826 @@
+:root {
+  --cream-50: #fdfbf8;
+  --cream-100: #f8f4ed;
+  --cream-200: #ede6da;
+  --cream-300: #ddd4c4;
+  --red-500: #9b2335;
+  --red-600: #7e1c2b;
+  --red-muted: rgba(155, 35, 53, 0.08);
+  --red-border: rgba(155, 35, 53, 0.18);
+  --ink: #1e1a17;
+  --ink-soft: #5c534a;
+  --ink-muted: #8a8178;
+  --line: rgba(30, 26, 23, 0.08);
+
+  --font-arabic: var(--font-amiri), serif;
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-source-sans), system-ui, sans-serif;
+
+  /* Fluid layout — scales with viewport */
+  --page-pad: clamp(1rem, 3.5vw, 1.5rem);
+  --max-width: min(42rem, calc(100vw - 2 * var(--page-pad)));
+  --section-gap: clamp(1rem, 0.85rem + 0.75vw, 1.35rem);
+
+  /* Fluid type scale */
+  --text-xs: clamp(0.6875rem, 0.64rem + 0.22vw, 0.8125rem);
+  --text-sm: clamp(0.875rem, 0.82rem + 0.28vw, 1rem);
+  --text-base: clamp(1rem, 0.94rem + 0.35vw, 1.125rem);
+  --text-md: clamp(1.0625rem, 0.98rem + 0.45vw, 1.25rem);
+  --text-lg: clamp(1.1875rem, 1.08rem + 0.55vw, 1.4375rem);
+  --text-xl: clamp(1.375rem, 1.22rem + 0.75vw, 1.625rem);
+  --text-arabic: clamp(1.4375rem, 1.25rem + 1vw, 1.875rem);
+  --text-name: clamp(2.125rem, 1.65rem + 5.5vw, 3.125rem);
+  --text-amp: clamp(1.5625rem, 1.35rem + 1.1vw, 2rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  /* Slightly larger base; all rem values scale with this */
+  font-size: clamp(17px, 16px + 0.55vw, 20px);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  background: linear-gradient(
+    180deg,
+    var(--cream-50) 0%,
+    var(--cream-100) 42%,
+    var(--cream-50) 100%
+  );
+  overflow-x: hidden;
+}
+
+/* Safety: decorative SVGs must never blow up */
+.monogram-logo svg,
+.heart-illustration,
+.ornament-heart,
+.page-watermark svg {
+  display: block;
+  flex-shrink: 0;
+  max-width: 100%;
+}
+
+.page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.page-watermark {
+  position: absolute;
+  top: 11rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-serif);
+  font-size: 5.5rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  opacity: 0.035;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.page-watermark-groom {
+  color: var(--ink-soft);
+}
+
+.page-watermark-amp {
+  color: var(--red-500);
+  font-style: italic;
+  font-size: 0.65em;
+}
+
+.page-watermark-heart {
+  color: var(--red-500);
+  opacity: 0.9;
+}
+
+.page-watermark-bride {
+  color: var(--red-500);
+}
+
+.nav {
+  width: 100%;
+  max-width: var(--max-width);
+  padding: 0.85rem var(--page-pad) 0.15rem;
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  width: 100%;
+  max-width: var(--max-width);
+  padding: 0.25rem var(--page-pad) 1.25rem;
+  margin: 0 auto;
+}
+
+/* ——— Monogram logo ——— */
+
+.monogram-logo {
+  position: relative;
+  width: clamp(7rem, 28vw, 9.5rem);
+  height: clamp(7rem, 28vw, 9.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.monogram-logo-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.monogram-logo-outer {
+  color: var(--cream-300);
+  stroke: var(--cream-300);
+}
+
+.monogram-logo-inner {
+  stroke: var(--red-500);
+  opacity: 0.45;
+}
+
+.monogram-logo-star {
+  color: var(--red-500);
+  opacity: 0.55;
+}
+
+.monogram-logo-heart {
+  color: var(--red-500);
+  opacity: 0.65;
+}
+
+.monogram-logo-heart-icon {
+  width: 0.85em;
+  height: 0.85em;
+  color: var(--red-500);
+  flex-shrink: 0;
+}
+
+.monogram-logo-dot {
+  color: var(--red-500);
+  opacity: 0.5;
+}
+
+.monogram-logo-letters {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 0.15em;
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 5.5vw, 1.85rem);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.monogram {
+  font-family: var(--font-serif);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.monogram-groom {
+  color: var(--ink-soft);
+}
+
+.monogram-amp {
+  color: var(--red-500);
+  font-style: italic;
+  letter-spacing: 0;
+}
+
+.monogram-bride {
+  color: var(--red-500);
+}
+
+.red-accent-line {
+  display: block;
+  width: 2.25rem;
+  height: 2px;
+  margin: 0.65rem auto 0;
+  background: var(--red-500);
+  opacity: 0.75;
+}
+
+.bismillah {
+  text-align: center;
+  padding-bottom: 0.85rem;
+  margin-bottom: var(--section-gap);
+}
+
+.bismillah .ornament-divider {
+  margin-bottom: 0.65rem;
+}
+
+/* ——— Ornament divider ——— */
+
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin: 0.85rem 0;
+  color: var(--red-500);
+  opacity: 0.45;
+}
+
+.ornament-line {
+  flex: 1;
+  max-width: 4.25rem;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--red-border), transparent);
+}
+
+.ornament-heart {
+  flex-shrink: 0;
+}
+
+.bismillah-ar {
+  font-family: var(--font-arabic);
+  font-size: var(--text-arabic);
+  line-height: 1.6;
+  color: var(--ink);
+  direction: rtl;
+}
+
+.bismillah-en {
+  margin-top: 0.35rem;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+}
+
+.hero {
+  position: relative;
+  text-align: center;
+  padding-bottom: var(--section-gap);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(100%, 28rem);
+  height: 85%;
+  background: radial-gradient(ellipse at center, rgba(155, 35, 53, 0.05) 0%, transparent 72%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hero-intro {
+  font-size: var(--text-md);
+  color: var(--ink-muted);
+  max-width: 32rem;
+  margin: 0 auto 0.85rem;
+  line-height: 1.55;
+}
+
+.person-block {
+  margin-bottom: 0.55rem;
+}
+
+.person-name {
+  font-family: var(--font-serif);
+  font-size: var(--text-name);
+  font-weight: 500;
+  line-height: 1.12;
+  color: var(--ink);
+  letter-spacing: 0.03em;
+}
+
+.person-name.bride {
+  color: var(--red-500);
+}
+
+.person-name.bride::after {
+  content: "";
+  display: block;
+  width: clamp(2.5rem, 16vw, 3.75rem);
+  height: 2px;
+  margin: 0.45rem auto 0;
+  background: linear-gradient(to right, transparent, var(--red-500), transparent);
+  opacity: 0.42;
+}
+
+.person-parent {
+  margin-top: 0.3rem;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  font-weight: 300;
+}
+
+.ampersand {
+  font-family: var(--font-serif);
+  font-size: var(--text-amp);
+  font-style: italic;
+  color: var(--red-500);
+  margin: 0.15rem 0 0.55rem;
+  line-height: 1;
+}
+
+.heart-mark {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.75rem;
+  opacity: 0;
+}
+
+.heart-illustration {
+  width: clamp(52px, 14vw, 64px);
+  height: clamp(46px, 12vw, 56px);
+  opacity: 0.6;
+}
+
+.mosque-mark {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.75rem;
+  opacity: 0;
+}
+
+.mosque-mark svg {
+  width: 2rem;
+  height: 2rem;
+  stroke: var(--red-500);
+  fill: none;
+  stroke-width: 1;
+}
+
+.ayah {
+  position: relative;
+  text-align: center;
+  padding: var(--section-gap) var(--page-pad);
+  background: var(--red-muted);
+  margin-left: calc(-1 * var(--page-pad));
+  margin-right: calc(-1 * var(--page-pad));
+}
+
+.ayah-ar {
+  font-family: var(--font-arabic);
+  font-size: var(--text-arabic);
+  line-height: 1.75;
+  color: var(--ink);
+  direction: rtl;
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+.ayah-en {
+  margin-top: 0.45rem;
+  font-size: var(--text-md);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  max-width: 32rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ayah-ref {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red-500);
+  font-style: normal;
+}
+
+section {
+  padding: var(--section-gap) 0;
+}
+
+section.section-spaced {
+  margin-top: clamp(1rem, 0.6rem + 1.5vw, 1.85rem);
+  padding-top: calc(var(--section-gap) + 0.25rem);
+}
+
+.section-label {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red-500);
+  margin-bottom: 0.65rem;
+  text-align: center;
+}
+
+.section-label::after {
+  content: "";
+  display: block;
+  width: 1.25rem;
+  height: 2px;
+  margin: 0.35rem auto 0;
+  background: var(--red-500);
+  opacity: 0.5;
+}
+
+.section-body {
+  text-align: center;
+  font-weight: 300;
+}
+
+.event-card {
+  position: relative;
+  background: var(--cream-100);
+  padding: clamp(1rem, 0.85rem + 0.75vw, 1.25rem) var(--page-pad);
+  text-align: center;
+  border-radius: 0.75rem;
+  box-shadow:
+    0 2px 14px rgba(30, 26, 23, 0.06),
+    0 1px 3px rgba(30, 26, 23, 0.04);
+}
+
+.event-date {
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 0.65rem;
+  line-height: 1.25;
+}
+
+.event-hijri {
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--ink-muted);
+}
+
+.event-detail {
+  margin-bottom: 0.2rem;
+}
+
+.event-detail-spaced {
+  margin-top: 0.45rem;
+}
+
+.event-detail strong {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.event-detail span {
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  font-weight: 300;
+}
+
+.map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.55rem 1rem;
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--cream-50);
+  background: var(--red-500);
+  border-radius: 999px;
+  transition:
+    background 0.25s ease,
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.map-link:hover {
+  background: var(--red-600);
+  transform: translateY(-1px);
+}
+
+.map-link:active {
+  transform: translateY(0);
+}
+
+.map-link svg {
+  width: 0.8rem;
+  height: 0.8rem;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.event-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 0.85rem;
+}
+
+.event-actions-left {
+  justify-content: flex-start;
+}
+
+.calendar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.55rem 1rem;
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--red-600);
+  background: var(--cream-50);
+  border: 1px solid var(--red-border);
+  border-radius: 999px;
+  transition:
+    background 0.25s ease,
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.calendar-link:hover {
+  background: var(--red-muted);
+  transform: translateY(-1px);
+}
+
+.calendar-link:active {
+  transform: translateY(0);
+}
+
+.calendar-link svg {
+  width: 0.8rem;
+  height: 0.8rem;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.note {
+  font-size: var(--text-md);
+  font-weight: 300;
+  color: var(--ink-muted);
+  text-align: center;
+  line-height: 1.55;
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+.note-left {
+  text-align: left;
+  margin-bottom: 0.75rem;
+  max-width: none;
+}
+
+.note em {
+  font-style: normal;
+  color: var(--ink-soft);
+}
+
+.private-badge {
+  display: inline-block;
+  margin-bottom: 0.65rem;
+  padding: 0.3rem 0.65rem;
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red-600);
+  background: var(--red-muted);
+  border-radius: 999px;
+}
+
+.gathering-card {
+  background: var(--red-muted);
+  padding: clamp(1rem, 0.85rem + 0.75vw, 1.25rem) var(--page-pad);
+  text-align: left;
+  border-radius: 0.75rem;
+  box-shadow:
+    0 2px 14px rgba(155, 35, 53, 0.08),
+    0 1px 3px rgba(30, 26, 23, 0.04);
+}
+
+.gathering-card .event-date {
+  font-size: var(--text-lg);
+  text-align: left;
+  margin-bottom: 0.65rem;
+}
+
+.event-date-left {
+  text-align: left;
+}
+
+.guest-greeting {
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  font-style: italic;
+  color: var(--ink);
+  margin-bottom: 0.65rem;
+}
+
+.gathering-card .map-link {
+  margin-top: 0;
+}
+
+.families {
+  font-family: var(--font-serif);
+  font-size: var(--text-md);
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+
+.footer-note {
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  font-weight: 300;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.closing-dua {
+  text-align: center;
+  padding: calc(var(--section-gap) + 0.25rem) 0 var(--section-gap);
+}
+
+.closing-dua-ar {
+  font-family: var(--font-arabic);
+  font-size: var(--text-arabic);
+  line-height: 1.75;
+  color: var(--ink);
+  direction: rtl;
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+.closing-dua-en {
+  margin-top: 0.55rem;
+  font-family: var(--font-serif);
+  font-size: var(--text-md);
+  font-style: italic;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  max-width: 32rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ——— Animations (reference-style: subtle fade & reveal) ——— */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1) var(--fade-delay, 0ms),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1) var(--fade-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.fade-in--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in--visible .red-accent-line {
+  animation: accent-line-grow 0.65s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--fade-delay, 0ms) + 280ms) forwards;
+}
+
+.red-accent-line {
+  width: 0;
+  opacity: 0;
+}
+
+@keyframes accent-line-grow {
+  to {
+    width: 2.25rem;
+    opacity: 0.75;
+  }
+}
+
+.fade-in--visible .section-label::after {
+  animation: label-line-grow 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+  transform: scaleX(0);
+  transform-origin: center;
+}
+
+.section-label::after {
+  transform: scaleX(0);
+}
+
+@keyframes label-line-grow {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.ampersand-reveal {
+  display: inline-block;
+}
+
+@keyframes mosque-emerge {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in--visible .heart-mark,
+.fade-in--visible .mosque-mark {
+  animation: mosque-emerge 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.fade-in--visible .heart-illustration,
+.fade-in--visible .mosque-illustration {
+  opacity: 0.6;
+}
+
+.event-card,
+.gathering-card {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fade-in--visible .event-card:hover,
+.fade-in--visible .gathering-card:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 359px) {
+  .page-watermark {
+    font-size: clamp(3.5rem, 18vw, 5.5rem);
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --max-width: 42rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .red-accent-line {
+    width: 2.25rem;
+    opacity: 0.75;
+    animation: none;
+  }
+
+  .section-label::after {
+    transform: scaleX(1);
+    animation: none;
+  }
+
+  .heart-mark,
+  .mosque-mark {
+    opacity: 1;
+    animation: none;
+  }
+
+  .heart-illustration,
+  .mosque-illustration {
+    opacity: 0.6;
+  }
+
+  .map-link:hover,
+  .calendar-link:hover,
+  .fade-in--visible .event-card:hover,
+  .fade-in--visible .gathering-card:hover {
+    transform: none;
+  }
+}
