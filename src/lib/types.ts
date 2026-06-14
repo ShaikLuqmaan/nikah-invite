@@ -7,9 +7,9 @@ export interface CalendarConfig {
 export interface SiteConfig {
   siteUrl: string;
   title: string;
-  monogram: { groom: string; bride: string };
-  groom: { name: string; parent: string };
-  bride: { name: string; parent: string };
+  monogram: { groom: string; bride: string; groomArabic: string; brideArabic: string };
+  groom: { name: string; nameArabic: string; parent: string };
+  bride: { name: string; nameArabic: string; parent: string };
   families: string;
   nikah: {
     date: string;

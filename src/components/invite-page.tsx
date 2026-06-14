@@ -4,8 +4,10 @@ import {
   MonogramLogo,
   HeartIllustration,
   OrnamentDivider,
-  PageWatermark,
 } from "./decorations";
+import { CalligraphyBackground } from "./calligraphy-background";
+import { EnvelopeIntro } from "./envelope-intro";
+import { FloatingPetals } from "./floating-petals";
 import { FadeIn } from "./fade-in";
 import { CalendarIcon, MapPinIcon } from "./icons";
 
@@ -17,8 +19,17 @@ export function InvitePage({ showGathering }: InvitePageProps) {
   const { monogram, groom, bride, families, nikah, gathering, notes } = site;
 
   return (
-    <div className="page">
-      <PageWatermark groom={monogram.groom} bride={monogram.bride} />
+    <EnvelopeIntro
+      groom={monogram.groom}
+      bride={monogram.bride}
+      groomArabic={monogram.groomArabic}
+      brideArabic={monogram.brideArabic}
+      nikahDate={nikah.date}
+      nikahVenue={nikah.venue}
+    >
+      <div className="page">
+      <CalligraphyBackground />
+      <FloatingPetals />
 
       <FadeIn eager delay={0}>
         <nav className="nav" aria-label="Site">
@@ -184,20 +195,12 @@ export function InvitePage({ showGathering }: InvitePageProps) {
         </FadeIn>
 
         <FadeIn delay={80}>
-          <section className="closing-dua">
-            <p className="closing-dua-ar" lang="ar">
-              {notes.dua.arabic}
-            </p>
-            <p className="closing-dua-en">{notes.dua.transliteration}</p>
-          </section>
-        </FadeIn>
-
-        <FadeIn delay={80}>
           <section>
             <p className="footer-note">{notes.walima}</p>
           </section>
         </FadeIn>
       </main>
-    </div>
+      </div>
+    </EnvelopeIntro>
   );
 }

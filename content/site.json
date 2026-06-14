@@ -3,14 +3,18 @@
   "title": "Luqmaan & Simrah's Nikah Invitation",
   "monogram": {
     "groom": "L",
-    "bride": "S"
+    "bride": "S",
+    "groomArabic": "ل",
+    "brideArabic": "س"
   },
   "groom": {
     "name": "Luqmaan Shaik",
+    "nameArabic": "لُقْمَان",
     "parent": "Son of Shaik Shafi ulla"
   },
   "bride": {
     "name": "Simrah Ummeruman",
+    "nameArabic": "سِمْرَة",
     "parent": "Daughter of Mohammed Abdul Faheem"
   },
   "families": "Shaik & Faheem Families",
