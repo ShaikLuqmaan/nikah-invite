@@ -184,16 +184,6 @@ export function InvitePage({ showGathering }: InvitePageProps) {
           </section>
         </FadeIn>
 
-        <FadeIn delay={0}>
-          <blockquote className="ayah" cite="Quran 2:187">
-            <p className="ayah-ar" lang="ar">
-              هُنَّ لِبَاسٌ لَّكُمْ وَأَنتُمْ لِبَاسٌ لَّهُنَّ
-            </p>
-            <p className="ayah-en">&ldquo;They are clothing for you and you are clothing for them.&rdquo;</p>
-            <cite className="ayah-ref">Surah Al-Baqarah · 2:187</cite>
-          </blockquote>
-        </FadeIn>
-
         <FadeIn delay={80}>
           <section>
             <p className="footer-note">{notes.walima}</p>
