@@ -23,11 +23,11 @@
     "hijriDate": "27 Muharram 1448 AH",
     "venue": "Masjid-e-Baqi",
     "location": "8-2-703, Road No. 12, Bhola Nagar, Banjara Hills, Hyderabad, Telangana 500028",
-    "time": "After Asr",
+    "time": "Asr prayer at 5:15 PM",
     "timeNote": "Please arrive early",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Masjid-e-Baqi,+8-2-703,+Road+No.+12,+Bhola+Nagar,+Banjara+Hills,+Hyderabad,+500028",
     "calendar": {
-      "start": "2026-07-12T16:30:00",
+      "start": "2026-07-12T17:15:00",
       "end": "2026-07-12T18:30:00",
       "timezone": "Asia/Kolkata"
     }
@@ -36,12 +36,12 @@
     "date": "Sunday, 12th July 2026",
     "venue": "Silver Tower Convention",
     "location": "Near Andhra Flour Mill, Nanal Nagar, Langar Houz, Hyderabad, Telangana 500008",
-    "time": "After Isha",
+    "time": "Event dinner at 9:00 PM",
     "timeNote": "Family & close friends only",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Silver+Tower+Convention,+Andhra+Flour+Mill,+Nanal+Nagar,+Langar+Houz,+Hyderabad,+500008",
     "message": "You are warmly invited to a small gathering with close family and friends following the Nikah.",
     "calendar": {
-      "start": "2026-07-12T20:00:00",
+      "start": "2026-07-12T21:00:00",
       "end": "2026-07-12T23:00:00",
       "timezone": "Asia/Kolkata"
     }
