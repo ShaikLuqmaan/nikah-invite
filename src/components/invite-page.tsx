@@ -184,11 +184,11 @@ export function InvitePage({ showGathering }: InvitePageProps) {
           </section>
         </FadeIn>
 
-        <FadeIn delay={80}>
+        {/* <FadeIn delay={80}>
           <section>
             <p className="footer-note">{notes.walima}</p>
           </section>
-        </FadeIn>
+        </FadeIn> */}
       </main>
       </div>
     </EnvelopeIntro>
